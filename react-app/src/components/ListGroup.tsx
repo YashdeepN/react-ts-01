@@ -3,6 +3,10 @@ import React from "react";
 const ListGroup = () => {
   const items = ["London", "New Delhi", "Tokyo", "Mumbai"];
 
+  function handleClick(event: React.MouseEvent) {
+    console.log(event);
+  }
+
   return (
     <>
       <h1>List Group</h1>
@@ -10,12 +14,8 @@ const ListGroup = () => {
         <p>No items found!</p>
       ) : (
         <ul className="list-group">
-          {items.map((item, index) => (
-            <li
-              key={item}
-              className="list-group-item"
-              onClick={() => console.log(item, index)}
-            >
+          {items.map((item) => (
+            <li key={item} className="list-group-item" onClick={handleClick}>
               {item}
             </li>
           ))}
