@@ -10,8 +10,12 @@ const ListGroup = () => {
         <p>No items found!</p>
       ) : (
         <ul className="list-group">
-          {items.map((item) => (
-            <li key={item} className="list-group-item">
+          {items.map((item, index) => (
+            <li
+              key={item}
+              className="list-group-item"
+              onClick={() => console.log(item, index)}
+            >
               {item}
             </li>
           ))}
