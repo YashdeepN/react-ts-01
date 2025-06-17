@@ -16,7 +16,9 @@ const App = () => {
         onSelectItem={handleSelectItem}
       />
 
-      <Alert text="Kya kya re?" />
+      <Alert>
+        <h1 className="danger">Children ka Children</h1>
+      </Alert>
     </>
   );
 };
