@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 
-const ListGroup = () => {
-  const items = ["London", "New Delhi", "Tokyo", "Mumbai"];
+interface ListGroupProps {
+  items: string[];
+  heading: string;
+}
 
+const ListGroup = ({ items, heading }: ListGroupProps) => {
   const [selected, setSelected] = useState(-1);
 
   return (
     <>
-      <h1>List Group</h1>
+      <h1>{heading}</h1>
       {items.length === 0 ? (
         <p>No items found!</p>
       ) : (
