@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ListGroup = () => {
   const items = ["London", "New Delhi", "Tokyo", "Mumbai"];
 
-  function handleClick(event: React.MouseEvent) {
-    console.log(event);
-  }
+  const [selected, setSelected] = useState(-1);
 
   return (
     <>
@@ -14,8 +12,16 @@ const ListGroup = () => {
         <p>No items found!</p>
       ) : (
         <ul className="list-group">
-          {items.map((item) => (
-            <li key={item} className="list-group-item" onClick={handleClick}>
+          {items.map((item, index) => (
+            <li
+              key={item}
+              className={
+                selected === index
+                  ? "list-group-item active"
+                  : "list-group-item"
+              }
+              onClick={() => setSelected(index)}
+            >
               {item}
             </li>
           ))}
