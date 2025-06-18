@@ -4,6 +4,7 @@ import Alert from "./components/Alert";
 import Buttons from "./components/Buttons";
 import Like from "./components/Like";
 import ExpandableText from "./components/ExpandableText";
+import MyForm from "./components/MyForm";
 
 const App = () => {
   const items = ["London", "New Delhi", "Tokyo", "Mumbai"];
@@ -42,6 +43,8 @@ const App = () => {
       <Like />
 
       <ExpandableText />
+
+      <MyForm />
     </>
   );
 };

@@ -5,7 +5,7 @@ interface Props {
 }
 
 const ExpandableText = ({ maxLength = 200 }: Props) => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const text = `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam enim
         id facere cupiditate labore voluptates! Necessitatibus impedit nemo
