@@ -20,14 +20,18 @@ const App = () => {
       />
 
       {showAlert && (
-        <Alert>
+        <Alert
+          onClick={() => {
+            setShowAlert(false);
+          }}
+        >
           <h1 className="danger">Children ka Children</h1>
         </Alert>
       )}
 
       <Buttons
         handleClick={() => {
-          setShowAlert((prev) => !prev);
+          setShowAlert(true);
         }}
       >
         myBtn
