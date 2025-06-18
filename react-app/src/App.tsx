@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ListGroup from "./components/ListGroup";
 import Alert from "./components/Alert";
 import Buttons from "./components/Buttons";
+import Like from "./components/Like";
 
 const App = () => {
   const items = ["London", "New Delhi", "Tokyo", "Mumbai"];
@@ -36,6 +37,8 @@ const App = () => {
       >
         myBtn
       </Buttons>
+
+      <Like />
     </>
   );
 };
