@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
 interface Props {
-  maxLength: number;
+  maxLength?: number;
 }
 
-const ExpandableText = ({ maxLength }: Props) => {
+const ExpandableText = ({ maxLength = 200 }: Props) => {
   const [isExpanded, setIsExpanded] = useState(true);
 
   const text = `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam enim
