@@ -41,7 +41,7 @@ const App = () => {
 
       <Like />
 
-      <ExpandableText />
+      <ExpandableText maxLength={50} />
     </>
   );
 };

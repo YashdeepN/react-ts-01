@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
-const ExpandableText = () => {
+interface Props {
+  maxLength: number;
+}
+
+const ExpandableText = ({ maxLength }: Props) => {
   const [isExpanded, setIsExpanded] = useState(true);
 
   const text = `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam enim
@@ -26,33 +30,6 @@ const ExpandableText = () => {
         explicabo eius id. Libero unde dolor debitis, quibusdam officia nam
         fugit harum architecto dolores beatae minus dolore ex quas tempore
         doloribus nemo molestias voluptas. Quibusdam repudiandae pariatur nam, a
-        voluptatibus est exercitationem laboriosam, placeat iste nisi non ea ab
-        fugiat explicabo repellendus commodi qui? Laboriosam totam debitis
-        provident recusandae quasi similique in hic. Vel, vitae sit corrupti
-        ipsam aliquam fugiat id quia beatae. Officiis neque dolorem nesciunt
-        quisquam, nobis non fugit blanditiis, expedita eos laudantium aliquam
-        asperiores fuga. Cumque harum ipsam illum! Esse aperiam quo similique
-        unde? Ratione repellendus vero iste accusantium cupiditate sapiente
-        optio veniam suscipit nobis, quisquam assumenda eum exercitationem
-        placeat ipsum sunt cumque rerum provident atque. Placeat voluptate ea
-        tempora beatae nemo? Harum libero ea quod officia ad dicta maxime quidem
-        repudiandae mollitia, officiis accusantium dolores aliquam voluptatum
-        impedit vitae eius, aut recusandae cumque delectus, sint similique
-        obcaecati eveniet. Dignissimos iste facilis velit voluptas laborum enim
-        obcaecati, in delectus quam mollitia possimus iusto nobis? Alias nulla
-        placeat excepturi magni voluptates libero maxime eaque exercitationem
-        fugiat commodi harum, ea odit error provident aspernatur magnam ipsa at!
-        Repudiandae eveniet quaerat consequatur quod? Hic eaque perferendis
-        soluta minima facilis dicta, repudiandae cupiditate nam dolorum. Quia
-        officiis molestias, nulla id ipsa sed, quaerat aperiam cum natus dolor
-        quasi ex tempora cupiditate ad! Autem nobis neque, assumenda amet quasi
-        excepturi minima accusantium obcaecati, delectus ratione quaerat tenetur
-        sit in quas accusamus soluta quis sed natus officia doloribus nam
-        praesentium vitae. Totam, eaque et unde natus minima, rerum nisi, dicta
-        vero praesentium nam dignissimos atque recusandae? Iusto, corporis
-        nihil. Eum provident nulla sequi rerum delectus expedita, non aliquid
-        earum dolores totam ab hic soluta sed corporis ipsam dolorem a officiis
-        dolore! Amet sapiente odit beatae expedita temporibus vitae quisquam,
         ipsam repudiandae sed, voluptatum aliquid, quam accusamus culpa quo!
         Maiores nemo aliquid ipsum, ratione consectetur temporibus dolores
         facilis, laborum modi vero aut minus fuga? Illum ab quae voluptas,
@@ -91,7 +68,7 @@ const ExpandableText = () => {
   return (
     <div>
       <p>
-        {isExpanded ? text : text.substring(0, 20)}
+        {isExpanded ? text : text.substring(0, maxLength)}
         <button onClick={() => setIsExpanded((prev) => !prev)}>
           {isExpanded ? "Less" : "More"}
         </button>
