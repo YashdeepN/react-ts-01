@@ -1,7 +1,27 @@
-import React from "react";
+import React, { type FormEvent } from "react";
 
 const ReactHookForm = () => {
-  return <div>ReactHookForm</div>;
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+    console.log("submitted");
+  }
+  return (
+    <form onSubmit={handleSubmit}>
+      <div className="mb-3">
+        <label htmlFor="name" className="form-label"></label>Name
+        <input id="name" type="text" className="form-control" />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="age" className="form-label">
+          Age
+        </label>
+        <input id="age" type="number" className="form-control" />
+      </div>
+      <button type="submit" className="btn btn-primary">
+        Submit
+      </button>
+    </form>
+  );
 };
 
 export default ReactHookForm;
