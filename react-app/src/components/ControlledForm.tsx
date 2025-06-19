@@ -1,19 +1,45 @@
-import React from "react";
+import React, { useState, type FormEvent } from "react";
 
 const ControlledForm = () => {
+  const [person, setPerson] = useState({
+    name: "",
+    age: "",
+  });
+
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    console.log(person);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="mb-3">
         <label htmlFor="name" className="form-label">
           Name
         </label>
-        <input type="text" id="name" className="form-control" />
+        <input
+          onChange={(event) =>
+            setPerson({ ...person, name: event.target.value })
+          }
+          type="text"
+          id="name"
+          value={person.name}
+          className="form-control"
+        />
       </div>
       <div className="mb-3">
         <label htmlFor="age" className="form-label">
           Age
         </label>
-        <input type="number" id="age" className="form-control" />
+        <input
+          onChange={(event) =>
+            setPerson({ ...person, age: event.target.value })
+          }
+          type="number"
+          id="age"
+          value={person.age}
+          className="form-control"
+        />
       </div>
       <button type="submit" className="btn btn-primary">
         Submit
