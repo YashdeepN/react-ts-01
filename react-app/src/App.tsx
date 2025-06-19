@@ -5,6 +5,7 @@ import Buttons from "./components/Buttons";
 import Like from "./components/Like";
 import ExpandableText from "./components/ExpandableText";
 import MyForm from "./components/MyForm";
+import ControlledForm from "./components/ControlledForm";
 
 const App = () => {
   const items = ["London", "New Delhi", "Tokyo", "Mumbai"];
@@ -45,6 +46,8 @@ const App = () => {
       <ExpandableText />
 
       <MyForm />
+
+      <ControlledForm />
     </>
   );
 };
