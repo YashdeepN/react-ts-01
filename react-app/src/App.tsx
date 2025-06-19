@@ -6,6 +6,7 @@ import Like from "./components/Like";
 import ExpandableText from "./components/ExpandableText";
 import MyForm from "./components/MyForm";
 import ControlledForm from "./components/ControlledForm";
+import ReactHookForm from "./components/ReactHookForm";
 
 const App = () => {
   const items = ["London", "New Delhi", "Tokyo", "Mumbai"];
@@ -45,9 +46,11 @@ const App = () => {
 
       <ExpandableText />
 
-      <MyForm />
+      {/* <MyForm />
 
-      <ControlledForm />
+      <ControlledForm /> */}
+
+      <ReactHookForm />
     </>
   );
 };
