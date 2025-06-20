@@ -6,7 +6,11 @@ interface FormData {
 }
 
 const SchemaValidation = () => {
-  const { register, handleSubmit } = useForm<FormData>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
 
   return (
     <form onSubmit={handleSubmit((data) => console.log(data))}>
@@ -15,11 +19,19 @@ const SchemaValidation = () => {
           Name
         </label>
         <input
-          {...register("name")}
+          {...register("name", { required: true, minLength: 3 })}
           type="text"
           id="name"
           className="form-control"
         />
+        {errors.name?.type === "required" && (
+          <p className="text-danger">The name field is required!</p>
+        )}
+        {errors.name?.type === "minLength" && (
+          <p className="text-danger">
+            The name should contain at least 3 characters!
+          </p>
+        )}
       </div>
       <div className="mb-3">
         <label htmlFor="age" className="form-label">
