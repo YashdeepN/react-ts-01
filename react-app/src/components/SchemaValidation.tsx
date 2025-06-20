@@ -1,9 +1,16 @@
 import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-interface FormData {
-  name: string;
-  age: number;
-}
+const formSchema = z.object({
+  name: z.string().min(3),
+  age: z.number().min(18),
+});
+
+type FormData = z.infer<typeof formSchema>;
+// interface FormData {
+//   name: string;
+//   age: number;
+// }
 
 const SchemaValidation = () => {
   const {
