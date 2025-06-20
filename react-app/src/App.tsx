@@ -5,6 +5,7 @@ import Buttons from "./components/Buttons";
 import Like from "./components/Like";
 import ExpandableText from "./components/ExpandableText";
 import ReactHookForm from "./components/ReactHookForm";
+import SchemaValidation from "./components/SchemaValidation";
 
 const App = () => {
   const items = ["London", "New Delhi", "Tokyo", "Mumbai"];
@@ -49,6 +50,7 @@ const App = () => {
       <ControlledForm /> */}
 
       <ReactHookForm />
+      <SchemaValidation />
     </>
   );
 };
