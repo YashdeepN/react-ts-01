@@ -27,19 +27,20 @@ const SchemaValidation = () => {
           Name
         </label>
         <input
-          {...register("name", { required: true, minLength: 3 })}
+          {...register("name")}
           type="text"
           id="name"
           className="form-control"
         />
-        {errors.name?.type === "required" && (
+        {/* {errors.name?.type === "required" && (
           <p className="text-danger">The name field is required!</p>
         )}
         {errors.name?.type === "minLength" && (
           <p className="text-danger">
             The name should contain at least 3 characters!
           </p>
-        )}
+        )} */}
+        {errors.name && <p className="text-danger">{errors.name.message}</p>}
       </div>
       <div className="mb-3">
         <label htmlFor="age" className="form-label">
