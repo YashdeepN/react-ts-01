@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ExpenseList from "./ExpenseList";
 
 const expenses = [
@@ -8,14 +8,19 @@ const expenses = [
   { id: 3, description: "item4", amount: 13, category: "some" },
 ];
 
-const onDelete = (id: number) => {
-  console.log(id);
-};
+// const onDelete = (id: number) => {
+//   console.log(id);
+//   setExps();
+// };
 
 const MyApp = () => {
+  const [exps, setExps] = useState(expenses);
   return (
     <>
-      <ExpenseList expenses={expenses} onDelete={onDelete} />
+      <ExpenseList
+        expenses={exps}
+        onDelete={(id) => setExps(exps.filter((exp) => exp.id !== id))}
+      />
     </>
   );
 };
