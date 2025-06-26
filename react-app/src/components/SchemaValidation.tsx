@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const formSchema = z.object({
   name: z.string().min(3),
@@ -17,7 +18,7 @@ const SchemaValidation = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormData>({ resolver: zodResolver(formSchema) });
 
   return (
     <form onSubmit={handleSubmit((data) => console.log(data))}>
