@@ -8,11 +8,6 @@ const expenses = [
   { id: 3, description: "item4", amount: 13, category: "some" },
 ];
 
-// const onDelete = (id: number) => {
-//   console.log(id);
-//   setExps();
-// };
-
 const MyApp = () => {
   const [exps, setExps] = useState(expenses);
   return (

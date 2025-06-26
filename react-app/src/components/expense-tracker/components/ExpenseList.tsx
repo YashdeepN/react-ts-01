@@ -40,6 +40,19 @@ const ExpenseList = ({ expenses, onDelete }: Props) => {
           </tr>
         ))}
       </tbody>
+      <tfoot>
+        <tr>
+          <td>Total</td>
+          <td>
+            $
+            {expenses
+              .reduce((sum, expense) => expense.amount + sum, 0)
+              .toFixed(2)}
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tfoot>
     </table>
   );
 };
