@@ -52,6 +52,7 @@ const SchemaValidation = () => {
           id="age"
           className="form-control"
         />
+        {errors.age && <p className="text-danger">{errors.age.message}</p>}
       </div>
       <button type="submit" className="btn btn-primary">
         Submit
