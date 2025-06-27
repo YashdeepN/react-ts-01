@@ -11,11 +11,20 @@ const expenses = [
 
 const MyApp = () => {
   const [exps, setExps] = useState(expenses);
+  const [selectedCategory, setSelectedCategory] = useState("all");
   return (
     <>
-      <ExpenseFilter onSelectCategory={(val) => console.log(val)} />
+      <div className="mb-3">
+        <ExpenseFilter
+          onSelectCategory={(category) => setSelectedCategory(category)}
+        />
+      </div>
       <ExpenseList
-        expenses={exps}
+        expenses={
+          selectedCategory === "all"
+            ? exps
+            : exps.filter((exp) => exp.category === selectedCategory)
+        }
         onDelete={(id) => setExps(exps.filter((exp) => exp.id !== id))}
       />
     </>
