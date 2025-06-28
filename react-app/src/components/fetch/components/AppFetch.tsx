@@ -64,10 +64,19 @@ const AppFetch = () => {
       });
   }
 
+  function addUser() {
+    const newUser = { id: 13, name: "Kalu" };
+
+    setUsers([newUser, ...users]);
+  }
+
   return (
     <>
       <p className="text-danger">{error}</p>
       {isLoading && <div className="spinner-border"></div>}
+      <button className="btn btn-primary mb-3" onClick={addUser}>
+        Add
+      </button>
       <ul className="list-group ">
         {users.map((user) => (
           <li
