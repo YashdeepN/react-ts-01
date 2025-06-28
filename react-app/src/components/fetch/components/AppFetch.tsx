@@ -87,6 +87,7 @@ const AppFetch = () => {
       <button className="btn btn-primary mb-3" onClick={addUser}>
         Add
       </button>
+
       <ul className="list-group ">
         {users.map((user) => (
           <li
@@ -94,12 +95,15 @@ const AppFetch = () => {
             key={user.id}
           >
             {user.name}{" "}
-            <button
-              onClick={() => deleteUser(user)}
-              className="btn btn-outline-danger"
-            >
-              Delete
-            </button>{" "}
+            <div>
+              <button className="btn btn-outline-secondary">Update</button>
+              <button
+                onClick={() => deleteUser(user)}
+                className="btn btn-outline-danger ms-3"
+              >
+                Delete
+              </button>
+            </div>{" "}
           </li>
         ))}
       </ul>
