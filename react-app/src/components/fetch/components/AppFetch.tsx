@@ -1,6 +1,5 @@
-import axios, { AxiosError, CanceledError } from "axios";
 import { useEffect, useState } from "react";
-import { set } from "zod/v4-mini";
+import apiClient, { CanceledError } from "../../../services/api-client";
 
 interface User {
   id: number;
