@@ -1,5 +1,6 @@
 import axios, { AxiosError, CanceledError } from "axios";
 import { useEffect, useState } from "react";
+import { set } from "zod/v4-mini";
 
 interface User {
   id: number;
@@ -66,8 +67,17 @@ const AppFetch = () => {
 
   function addUser() {
     const newUser = { id: 13, name: "Kalu" };
+    const originalUsers = [...users];
 
     setUsers([newUser, ...users]);
+
+    axios
+      .post("https://jsonplaceholder.typicode.com/users", newUser)
+      .then(({ data: savedUser }) => setUsers([savedUser, ...users]))
+      .catch((err) => {
+        setError(err.message);
+        setUsers(originalUsers);
+      });
   }
 
   return (
