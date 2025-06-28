@@ -15,7 +15,15 @@ const AppFetch = () => {
       .then((res) => setUsers(res.data));
   }, []);
 
-  return <div>AppFetch</div>;
+  return (
+    <>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+    </>
+  );
 };
 
 export default AppFetch;
