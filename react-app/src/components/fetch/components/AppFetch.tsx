@@ -80,6 +80,22 @@ const AppFetch = () => {
       });
   }
 
+  const updateUser = (user: User) => {
+    const originalUser = [...users];
+    const updatedUser = { ...user, name: user.name + "++" };
+    setUsers(users.map((u) => (u.id === user.id ? updatedUser : u)));
+
+    axios
+      .patch(
+        "https://jsonplaceholder.typicode.com/users/" + user.id,
+        updatedUser
+      )
+      .catch((err) => {
+        setError(err.message);
+        setUsers(originalUser);
+      });
+  };
+
   return (
     <>
       <p className="text-danger">{error}</p>
@@ -96,7 +112,12 @@ const AppFetch = () => {
           >
             {user.name}{" "}
             <div>
-              <button className="btn btn-outline-secondary">Update</button>
+              <button
+                className="btn btn-outline-secondary"
+                onClick={() => updateUser(user)}
+              >
+                Update
+              </button>
               <button
                 onClick={() => deleteUser(user)}
                 className="btn btn-outline-danger ms-3"
