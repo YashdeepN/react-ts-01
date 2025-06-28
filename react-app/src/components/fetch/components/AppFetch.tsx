@@ -10,30 +10,36 @@ const AppFetch = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [error, setError] = useState("");
 
-  //   useEffect(() => {
-  //     axios
-  //       .get<User[]>("https://jsonplaceholder.typicode.com/users")
-  //       .then((res) => setUsers(res.data))
-  //       .catch((err) => setError(err.message));
-  //   }, []);
+  useEffect(() => {
+    const controller = new AbortController();
+
+    axios
+      .get<User[]>("https://jsonplaceholder.typicode.com/users", {
+        signal: controller.signal,
+      })
+      .then((res) => setUsers(res.data))
+      .catch((err) => setError(err.message));
+
+    return () => controller.abort();
+  }, []);
 
   // That was fetching using promise
   // Now we'll fetch using async await
 
-  useEffect(() => {
-    async function fetchUser() {
-      try {
-        const res = await axios.get<User[]>(
-          "https://jsonplaceholder.typicode.com/users"
-        );
-        setUsers(res.data);
-      } catch (err) {
-        setError((err as AxiosError).message);
-      }
-    }
+  //   useEffect(() => {
+  //     async function fetchUser() {
+  //       try {
+  //         const res = await axios.get<User[]>(
+  //           "https://jsonplaceholder.typicode.com/users"
+  //         );
+  //         setUsers(res.data);
+  //       } catch (err) {
+  //         setError((err as AxiosError).message);
+  //       }
+  //     }
 
-    fetchUser();
-  }, []);
+  //     fetchUser();
+  //   }, []);
 
   return (
     <>
