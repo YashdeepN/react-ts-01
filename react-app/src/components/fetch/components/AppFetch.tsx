@@ -10,7 +10,7 @@ const AppFetch = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    const { request, cancel } = userServices.getAllUsers();
+    const { request, cancel } = userServices.getAll<User>();
 
     request
       .then((res) => {
@@ -51,7 +51,7 @@ const AppFetch = () => {
     const originalUsers = [...users];
     setUsers(users.filter((u) => u.id !== user.id));
     // apiClient.delete("/users/" + user.id)
-    userServices.deleteUser(user).catch((err) => {
+    userServices.delete(user.id).catch((err) => {
       setError(err.message);
       setUsers(originalUsers);
     });
@@ -67,7 +67,7 @@ const AppFetch = () => {
     //   .post("/users", newUser)
 
     userServices
-      .addUser(newUser)
+      .create(newUser)
       .then(({ data: savedUser }) => setUsers([savedUser, ...users]))
       .catch((err) => {
         setError(err.message);
@@ -81,7 +81,7 @@ const AppFetch = () => {
     setUsers(users.map((u) => (u.id === user.id ? updatedUser : u)));
 
     // apiClient.patch("/users/" + user.id, updatedUser)
-    userServices.updateUser(user).catch((err) => {
+    userServices.update(user).catch((err) => {
       setError(err.message);
       setUsers(originalUser);
     });
