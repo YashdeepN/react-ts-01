@@ -1,33 +1,37 @@
-import { useEffect, useState } from "react";
-import { CanceledError } from "../../../services/api-client";
 import type { User } from "../../../services/user-services";
 import userServices from "../../../services/user-services";
+import useUsers from "../../../hooks/useUsers";
 
 const AppFetch = () => {
-  const [users, setUsers] = useState<User[]>([]);
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const { users, error, isLoading, setUsers, setError } = useUsers();
 
-  useEffect(() => {
-    setIsLoading(true);
-    const { request, cancel } = userServices.getAll<User>();
+  //  ye code custom hook me daal diya..
+  //   const [users, setUsers] = useState<User[]>([]);
+  //   const [error, setError] = useState("");
+  //   const [isLoading, setIsLoading] = useState(false);
 
-    request
-      .then((res) => {
-        setUsers(res.data);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
-        setError(err.message);
-        setIsLoading(false);
-      });
-    //   .finally(() => {
-    //     setIsLoading(false);
-    //   });
+  //   useEffect(() => {
+  //     setIsLoading(true);
+  //     const { request, cancel } = userServices.getAll<User>();
 
-    return () => cancel();
-  }, []);
+  //     request
+  //       .then((res) => {
+  //         setUsers(res.data);
+  //         setIsLoading(false);
+  //       })
+  //       .catch((err) => {
+  //         if (err instanceof CanceledError) return;
+  //         setError(err.message);
+  //         setIsLoading(false);
+  //       });
+  //     //   .finally(() => {
+  //     //     setIsLoading(false);
+  //     //   });
+
+  //     return () => cancel();
+  //   }, []);
+
+  // ---------------------------------------------------------------------
 
   // That was fetching using promise
   // Now we'll fetch using async await
