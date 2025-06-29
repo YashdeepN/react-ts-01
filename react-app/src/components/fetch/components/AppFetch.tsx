@@ -50,7 +50,8 @@ const AppFetch = () => {
   function deleteUser(user: User) {
     const originalUsers = [...users];
     setUsers(users.filter((u) => u.id !== user.id));
-    apiClient.delete("/users/" + user.id).catch((err) => {
+    // apiClient.delete("/users/" + user.id)
+    userServices.deleteUser(user).catch((err) => {
       setError(err.message);
       setUsers(originalUsers);
     });
