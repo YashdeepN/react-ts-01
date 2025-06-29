@@ -63,8 +63,11 @@ const AppFetch = () => {
 
     setUsers([newUser, ...users]);
 
-    apiClient
-      .post("/users", newUser)
+    // apiClient
+    //   .post("/users", newUser)
+
+    userServices
+      .addUser(newUser)
       .then(({ data: savedUser }) => setUsers([savedUser, ...users]))
       .catch((err) => {
         setError(err.message);
