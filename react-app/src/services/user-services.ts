@@ -22,6 +22,10 @@ class UserService {
   addUser(newUser: User) {
     return apiClient.post("/users", newUser);
   }
+
+  updateUser(id: number, updatedUser: User) {
+    return apiClient.patch("/users/" + id, updatedUser);
+  }
 }
 
 export default new UserService();
