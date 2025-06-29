@@ -23,8 +23,8 @@ class UserService {
     return apiClient.post("/users", newUser);
   }
 
-  updateUser(id: number, updatedUser: User) {
-    return apiClient.patch("/users/" + id, updatedUser);
+  updateUser(user: User) {
+    return apiClient.patch("/users/" + user.id, user);
   }
 }
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import apiClient, { CanceledError } from "../../../services/api-client";
+import { CanceledError } from "../../../services/api-client";
 import type { User } from "../../../services/user-services";
 import userServices from "../../../services/user-services";
 
@@ -81,7 +81,7 @@ const AppFetch = () => {
     setUsers(users.map((u) => (u.id === user.id ? updatedUser : u)));
 
     // apiClient.patch("/users/" + user.id, updatedUser)
-    userServices.updateUser(user.id, updatedUser).catch((err) => {
+    userServices.updateUser(user).catch((err) => {
       setError(err.message);
       setUsers(originalUser);
     });
